@@ -10,9 +10,9 @@ Vagrant.configure("2") do |config|
   # This is usually a image specifically cooked using Veewee (or Packer)
   # which has the guest additions already installed. Obviously this does
   # not need to be the case - you can build them yourself!
-  config.vm.hostname = "app01"
-  config.vm.box = 'opscode-centos-6.4'
-  config.vm.box_url = 'https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_centos-6.4_provisionerless.box'
+  config.vm.hostname = "app"
+  config.vm.box = 'opscode-ubuntu-12.04'
+  config.vm.box_url = 'https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_ubuntu-12.04_provisionerless.box'
 
   # Assign this VM to a host-only network IP, allowing you to access it
   # via the IP. Host-only networks can talk to the host machine as well as
@@ -29,7 +29,7 @@ Vagrant.configure("2") do |config|
   # backing providers for Vagrant. These expose provider-specific options.
   # Use VBoxManage to customize the VM. For example to change memory:
   config.vm.provider :virtualbox do |vb|
-    vb.customize ["modifyvm", :id, "--memory", 512]
+    vb.customize ["modifyvm", :id, "--memory", 256]
   end
 
   # Set some settings for the host->guest SSH connection.
