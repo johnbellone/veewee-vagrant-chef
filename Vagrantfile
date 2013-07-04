@@ -30,13 +30,18 @@ Vagrant.configure("2") do |config|
   # Use VBoxManage to customize the VM. For example to change memory:
   config.vm.provider :virtualbox do |vb|
     vb.customize ["modifyvm", :id, "--memory", 256]
+    vb.customize ["modifyvm", :id, "--cpus", 2]
   end
 
   # Set some settings for the host->guest SSH connection.
   config.ssh.max_tries = 40
   config.ssh.timeout   = 120
 
+  # Finally setup Chef Solo to provision the virtual machine environment
+  # with the necessary tools we need to deploy our application. This
+  # mainly boils down to Ruby.
   config.vm.provision :chef_solo do |chef|
+    chef.run_list = ['recipe[apt]', 'recipe[ruby_build]', 'recipe[rbenv::system]']
     chef.json = {
      :rbenv => {
       :rubies => ['1.9.3'],
