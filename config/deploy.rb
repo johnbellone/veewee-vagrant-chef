@@ -2,7 +2,8 @@
 set :application, "veewee-vagrant-chef"
 set :repository, '.'
 set :deploy_via, :copy
-set :copy_excludes, IO.readlines('.deployignore').map(&:chomp)
+set :copy_cache, true
+set :copy_exclude, IO.readlines('.deployignore').map(&:chomp)
 
 # Information about credentials necessary for the *deploy*.
 set :user, 'vagrant'
