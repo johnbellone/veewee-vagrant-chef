@@ -1,5 +1,7 @@
 # Veewee, Vagrant and Chef (Deployment testing)
 
+The [original content][13] from this was developed from my [blog][14].
+
 This is the [example project][12] for the [Scale DC][11] presentation on deployment
 testing with [Veewee][10], [Vagrant][4] and [Chef][1]. It provides a relatively
 simple example of deploying a small Ruby web application to a local virtual
@@ -86,3 +88,5 @@ operating system.
 [10]: https://github.com/jedi4ever/veewee
 [11]: http://meetup.com/Scale-DC
 [12]: https://github.com/scaledc/veewee-vagrant-chef
+[13]: http://www.thoughtlessbanter.com/blog/2013-04-27-from-vewee-to-vagrant-then-chef/
+[14]: http://www.thoughtlessbanter.com/
