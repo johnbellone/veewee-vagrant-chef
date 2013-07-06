@@ -2,13 +2,15 @@
 set :application, "veewee-vagrant-chef"
 set :repository, '.'
 set :deploy_via, :copy
-set :copy_cache, true
 set :copy_exclude, IO.readlines('.deployignore').map(&:chomp)
 
 # Information about credentials necessary for the *deploy*.
 set :user, 'vagrant'
 set :group, 'vagrant'
-set :default_run_options, {:pty => true}
+set :default_run_options, {
+  :shell => '/bin/bash -l',
+  :pty => true
+}
 set :ssh_options, {
   :forward_agent => true,
   :keys => ['~/.vagrant.d/insecure_private_key']
