@@ -1,5 +1,10 @@
 # Veewee, Vagrant and Chef (Deployment testing)
 
+This is the example project for the [Scale DC][11] presentation on deployment
+testing with [Veewee][10], [Vagrant][4] and [Chef][1]. It provides a relatively
+simple example of deploying a small Ruby web application to a local virtual
+machine guest for testing.
+
 ## Requirements
 
 I tried to keep the requirements to run this project as basic as possible. Most
@@ -73,6 +78,9 @@ operating system.
 [2]: https://rubygems.org
 [3]: https://berkshelf.com
 [4]: https://vagrantup.com
-[5]: https://bundler.com
+[5]: https://gembundler.com
 [6]: https://ruby-lang.org
-[7]:
+[7]: https://virtualbox.org
+[8]: https://github.com/capistrano/capistrano
+[9]: https://github.com/opscode/bento
+[10]: https://github.com/jedi4ever/veewee
