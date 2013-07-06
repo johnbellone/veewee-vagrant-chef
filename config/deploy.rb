@@ -1,10 +1,24 @@
 # veewee-vagrant-chef/config/deploy.rb
 set :application, "veewee-vagrant-chef"
-set :repository,  "."
+set :repository, '.'
+set :deploy_via, :copy
+set :copy_excludes, IO.readlines('.deployignore').map(&:chomp)
 
 # Information about credentials necessary for the *deploy*.
-set :deploy_to, "/var/www/#{application}"
-set :user, 'deployer'
+set :user, 'vagrant'
+set :group, 'vagrant'
+set :default_run_options, {:pty => true}
+set :ssh_options, {
+  :forward_agent => true,
+  :keys => ['~/.vagrant.d/insecure_private_key']
+}
+
+# Modify the deploy directory with proper group.
+after 'deploy:setup' do
+  run "#{sudo} chgrp -R #{group} #{deploy_to} && #{sudo} chmod -R g+s #{deploy_to}" 
+end
+
+require 'bundler/capistrano'
 
 # Cleanup after ourselves because your mother doesn't work here.
 after "deploy:restart", "deploy:cleanup"
@@ -16,7 +30,12 @@ set :foreman_upstart_path, '/etc/init'
 set :foreman_options, {
  app: application,
  log: File.join(shared_path, 'log'),
- user: 'webuser'
+ user: 'vagrant'
 }
+
+# Actually run the Foreman commands to get an Upstart configuration.
+after 'deploy:update_code', 'foreman:export'
+
+server '33.33.33.10', :app
 
 
