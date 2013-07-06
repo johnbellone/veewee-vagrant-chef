@@ -48,7 +48,8 @@ Vagrant.configure("2") do |config|
       :global => '1.9.3-p429',
       :gems => {
         '1.9.3-p429' => [
-          {'bundler' => '~> 1.3'}
+          {'name' => 'bundler'},
+          {'name' => 'rake'}
         ]
       }
      }
