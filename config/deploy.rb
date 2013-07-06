@@ -3,6 +3,7 @@ set :application, "veewee-vagrant-chef"
 set :repository, '.'
 set :deploy_via, :copy
 set :copy_exclude, IO.readlines('.deployignore').map(&:chomp)
+set :normalize_asset_timestamps, false
 
 # Information about credentials necessary for the *deploy*.
 set :user, 'vagrant'
@@ -28,9 +29,13 @@ after "deploy:restart", "deploy:cleanup"
 
 # Setup all the options for exporting a Upstart configuration with Foreman.
 require 'capistrano/foreman'
+set :foreman_upstart_path, '/etc/init'
 
 # Actually run the Foreman commands to get an Upstart configuration.
 after :deploy, 'foreman:export'
+after 'deploy:start', 'foreman:start'
+after 'deploy:restart', 'foreman:restart'
+after 'deploy:stop', 'foreman:stop'
 
 server '33.33.33.10', :app
 
