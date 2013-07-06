@@ -37,7 +37,7 @@ set :foreman_options, {
 }
 
 # Actually run the Foreman commands to get an Upstart configuration.
-after 'deploy:update_code', 'foreman:export'
+after :deploy, 'foreman:export'
 
 server '33.33.33.10', :app
 
