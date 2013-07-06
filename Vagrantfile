@@ -27,7 +27,8 @@ Vagrant.configure("2") do |config|
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
-  # Use VBoxManage to customize the VM. For example to change memory:
+  # Use VBoxManage to customize the VM. For example to change memory and
+  # the number of CPUs:
   config.vm.provider :virtualbox do |vb|
     vb.customize ["modifyvm", :id, "--memory", 256]
     vb.customize ["modifyvm", :id, "--cpus", 2]
@@ -42,6 +43,8 @@ Vagrant.configure("2") do |config|
   # mainly boils down to Ruby.
   config.vm.provision :chef_solo do |chef|
     chef.run_list = ['recipe[apt]', 'recipe[ruby_build]', 'recipe[rbenv::system]']
+
+    # Install Ruby 1.9.3 and some default gems. We need 'bundler' for our deploys.
     chef.json = {
      :rbenv => {
       :rubies => ['1.9.3-p429'],
