@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/hyperoslo/capistrano-foreman.git
+  revision: 28f0af374fb03c27c1b33fe7117142fb30abf685
+  specs:
+    capistrano-foreman (0.0.3)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -33,7 +39,6 @@ GEM
       net-sftp (>= 2.0.0)
       net-ssh (>= 2.0.14)
       net-ssh-gateway (>= 1.1.0)
-    capistrano-foreman (0.0.3)
     celluloid (0.14.1)
       timers (>= 1.0.0)
     celluloid-io (0.14.1)
@@ -159,7 +164,7 @@ PLATFORMS
 DEPENDENCIES
   berkshelf
   capistrano
-  capistrano-foreman
+  capistrano-foreman!
   foodcritic
   foreman
   puma
