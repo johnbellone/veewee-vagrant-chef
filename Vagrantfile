@@ -44,10 +44,10 @@ Vagrant.configure("2") do |config|
     chef.run_list = ['recipe[apt]', 'recipe[ruby_build]', 'recipe[rbenv::system]']
     chef.json = {
      :rbenv => {
-      :rubies => ['1.9.3'],
-      :global => '1.9.3',
+      :rubies => ['1.9.3-p429'],
+      :global => '1.9.3-p429',
       :gems => {
-        '1.9.3' => [
+        '1.9.3-p429' => [
           {'bundler' => '~> 1.3'}
         ]
       }
