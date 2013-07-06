@@ -29,18 +29,18 @@ end
 # Use the packaged Bundler recipe to run install automatically on deploy.
 require 'bundler/capistrano'
 
-# Cleanup after ourselves because your mother doesn't work here.
-after "deploy:restart", "deploy:cleanup"
-
 # Setup all the options for exporting a Upstart configuration with Foreman.
 require 'capistrano/foreman'
 set :foreman_upstart_path, '/etc/init'
 
 # Actually run the Foreman commands to get an Upstart configuration.
-after :deploy, 'foreman:export'
+after 'deploy:create_symlink', 'foreman:export'
 after 'deploy:start', 'foreman:start'
 after 'deploy:restart', 'foreman:restart'
 after 'deploy:stop', 'foreman:stop'
+
+# Cleanup after ourselves because your mother doesn't work here.
+after 'deploy:restart', "deploy:cleanup"
 
 # The same private address as in the Vagrantfile.
 server '33.33.33.10', :app
