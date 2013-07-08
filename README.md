@@ -24,14 +24,40 @@ The recipes will likely all work as expected unless, obviously, there is some
 change that requires some tweaking. I'll try and keep everything running like
 butter.
 
+## Setup
+
+After you have all of the requirements installed and have checked out the
+repository locally you have a few preparation steps. [Vagrant][4] has the
+capability of adding plugins to it. We use this feature to properly utilize
+the [Berkshelf][3] gem and install our [Chef][1] cookbooks automatically.
+
+In addition to above since our base boxes that are built with [Veewee][10]
+actually do not include [Chef][1] we need to use a plugin for this as well.
+What this means is that we'll always have the latest version of Chef to
+provision our machines with.
+
+        $ vagrant plugin install vagrant-berkshelf
+        $ vagrant plugin install vagrant-omnibus
+
 ## Cooking a base box
 
 This part of the project is generally overlooked as most people just grab a
 already cooked set of base boxes from GitHub. I tend to use [Opscode][1] own
-[bento box project][9] which is agnostic from the provisioner.
+[bento box project][9] which is agnostic from the [Chef][1] software package
+provisioner. Basically this is just a vanilla Linux box ready to rock and
+roll with [Vagrant][4].
 
 But if you want to cook your own machine image [Veewee][10] is an excellent
-gem to do so.
+gem to do so. And the best part about it is that the [bento box project][9]
+uses [Veewee][10] to define its boxes. Therefore you use this as a basis for
+any tweaks you need to do!
+
+An example of the above, once you have the repository checked out:
+
+        $ bundle install --binstubs
+        $ bin/veewee vbox build 'opscode-ubuntu-12.04' --nogui --force
+        $ bin/veewee vbox export 'opscode-ubuntu-12.04'
+        $ vagrant box add 'opscode-ubuntu-12.04' 'opscode-ubuntu-12.04.box'
 
 ## Building the virtual machine
 
@@ -75,6 +101,10 @@ application was deployed (and started). Because the [Vagrant][4] file explicitly
 specifies port forwarding the application is available on *port 8080* from the
 host machine. It is actually running on the standard HTTP port 80 in the guest
 operating system.
+
+If everything goes as expected you should be prompted with a 'Hello World'
+message which is delivered from the small web server that is being run inside of
+the guest virtual machine.
 
 ## License
 
