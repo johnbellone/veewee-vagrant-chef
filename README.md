@@ -1,4 +1,5 @@
 # Veewee, Vagrant and Chef (Deployment testing)
+[![Build Status](https://travis-ci.org/scaledc/veewee-vagrant-chef.png)](https://travis-ci.org/scaledc/veewee-vagrant-chef])
 
 The [original content][13] from this was developed from my [blog][14].
 
