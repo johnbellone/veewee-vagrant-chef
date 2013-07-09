@@ -56,9 +56,9 @@ any tweaks you need to do!
 An example of the above, once you have the repository checked out:
 
         $ bundle install --binstubs
-        $ bin/veewee vbox build 'opscode-ubuntu-12.04' --nogui --force
-        $ bin/veewee vbox export 'opscode-ubuntu-12.04'
-        $ vagrant box add 'opscode-ubuntu-12.04' 'opscode-ubuntu-12.04.box'
+        $ bin/veewee vbox build 'ubuntu-12.04' --nogui --force
+        $ bin/veewee vbox export 'ubuntu-12.04'
+        $ vagrant box add 'opscode-ubuntu-12.04' 'ubuntu-12.04.box'
 
 ## Building the virtual machine
 
