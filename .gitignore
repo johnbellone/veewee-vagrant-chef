@@ -31,3 +31,5 @@ doc/
 
 
 
+.kitchen/
+.kitchen.local.yml
