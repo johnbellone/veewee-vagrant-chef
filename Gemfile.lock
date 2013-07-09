@@ -112,6 +112,7 @@ GEM
     rack-protection (1.5.0)
       rack
     rak (1.4)
+    rake (10.1.0)
     rbzip2 (0.2.0)
     retryable (1.3.3)
     ridley (1.2.4)
@@ -188,5 +189,6 @@ DEPENDENCIES
   foreman
   kitchen-vagrant
   puma
+  rake
   sinatra
   test-kitchen (~> 1.0.0.alpha)
