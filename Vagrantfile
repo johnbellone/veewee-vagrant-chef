@@ -10,7 +10,7 @@ Vagrant.configure("2") do |config|
   # This is usually a image specifically cooked using Veewee (or Packer)
   # which has the guest additions already installed. Obviously this does
   # not need to be the case - you can build them yourself!
-  config.vm.hostname = "app"
+  config.vm.hostname = "ubuntu-demo"
   config.vm.box = 'opscode-ubuntu-12.04'
   config.vm.box_url = 'https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_ubuntu-12.04_provisionerless.box'
 
