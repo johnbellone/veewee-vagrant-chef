@@ -27,10 +27,8 @@ Vagrant.configure("2") do |config|
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
-  # Use VBoxManage to customize the VM. For example to change memory and
-  # the number of CPUs:
+  # Use VBoxManage to customize the VM. For example the number of CPUs:
   config.vm.provider :virtualbox do |vb|
-    vb.customize ["modifyvm", :id, "--memory", 256]
     vb.customize ["modifyvm", :id, "--cpus", 2]
   end
 
