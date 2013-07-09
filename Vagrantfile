@@ -42,7 +42,7 @@ Vagrant.configure("2") do |config|
   # with the necessary tools we need to deploy our application. This
   # mainly boils down to Ruby.
   config.vm.provision :chef_solo do |chef|
-    chef.run_list = ['recipe[apt]', 'recipe[ruby_build]', 'recipe[rbenv::system]']
+    chef.run_list = ['recipe[apt]', 'recipe[ruby_build]', 'recipe[rbenv::system]', 'recipe[rbenv::vagrant]']
 
     # Install Ruby 1.9.3 and some default gems. We need 'bundler' for our deploys.
     chef.json = {
