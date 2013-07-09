@@ -5,7 +5,7 @@ gem 'foreman'
 gem 'sinatra'
 gem 'capistrano'
 gem 'capistrano-foreman', github: 'hyperoslo/capistrano-foreman'
-
+gem 'rake'
 gem 'berkshelf', :group => :development
 
 group :test do
